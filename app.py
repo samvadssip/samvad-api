@@ -10,6 +10,12 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route('/translate', methods=['POST'])
+def translate():
+    temp = request.form.get('temp')
+    result = {'temp': temp}
+    return jsonify(result)
+
 
 # @app.route('/translate', methods=['POST', 'GET'])
 # def translate():
