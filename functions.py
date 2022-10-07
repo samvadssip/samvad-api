@@ -71,34 +71,34 @@ class Predictor:
                 if cv2.waitKey(10) & 0xff == ord('q'):
                     break
                 # Make detections
-        #         image, results = self.mediapipe_detection(frame, holistic)
-        #         # print(results)
-        #
-        #         # Draw landmarks
-        #         self.draw_styled_landmarks(image, results)
-        #
-        #         # 2. Prediction logic
-        #         keypoints = self.extract_keypoints(results)
-        # #         sequence.insert(0,keypoints)
-        # #         sequence = sequence[:30]
-        #         sequence.append(keypoints)
-        #         sequence = sequence[-100:]
-        #
-        #         if len(sequence) == 100:
-        #             res = self.model.predict(np.expand_dims(sequence, axis=0))[0]
-        #
-        #
-        #         #3. Viz logic
-        #             if res[np.argmax(res)] > self.threshold:
-        #                 self.counts.append(self.actions[np.argmax(res)])
-        #                 if len(sentence) > 0:
-        #                     if self.actions[np.argmax(res)] != sentence[-1]:
-        #                         sentence.append(self.actions[np.argmax(res)])
-        #                 else:
-        #                     sentence.append(self.actions[np.argmax(res)])
-        #
-        #             if len(sentence) > 5:
-        #                 sentence = sentence[-5:]
+                image, results = self.mediapipe_detection(frame, holistic)
+                # print(results)
+
+                # Draw landmarks
+                self.draw_styled_landmarks(image, results)
+
+                # 2. Prediction logic
+                keypoints = self.extract_keypoints(results)
+        #         sequence.insert(0,keypoints)
+        #         sequence = sequence[:30]
+                sequence.append(keypoints)
+                sequence = sequence[-100:]
+
+                if len(sequence) == 100:
+                    res = self.model.predict(np.expand_dims(sequence, axis=0))[0]
+
+
+                #3. Viz logic
+                    if res[np.argmax(res)] > self.threshold:
+                        self.counts.append(self.actions[np.argmax(res)])
+                        if len(sentence) > 0:
+                            if self.actions[np.argmax(res)] != sentence[-1]:
+                                sentence.append(self.actions[np.argmax(res)])
+                        else:
+                            sentence.append(self.actions[np.argmax(res)])
+
+                    if len(sentence) > 5:
+                        sentence = sentence[-5:]
 
 
         return 'arm'
