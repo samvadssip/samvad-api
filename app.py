@@ -4,16 +4,17 @@ from functions import Predictor
 
 app = Flask(__name__)
 
-# pred = Predictor('latest_model.h5')
+# pred = Predictor('model.h5')
 
 @app.route('/')
 def home():
     return "hello world"
 
 
-# @app.route('/translate', methods=['POST'])
+# @app.route('/translate', methods=['POST', 'GET'])
 # def translate():
-#     video_path = request.form.get('video') #video path
+#     # video_path = request.form.get('video') #video path
+#     video_path = "VN20221006_123507.mp4"
 #     # result = {'pictures': pictures}
 #
 #     # res = json.loads(requests.get(video_path).content.decode("utf-8"))

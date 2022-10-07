@@ -8,12 +8,12 @@ from tensorflow.keras.layers import LSTM, Dense, GRU, Dropout
 
 def create_model(model_path):
     model = Sequential()
-    model.add(GRU(256, return_sequences=True, activation='relu', input_shape=(100,1662)))
+    model.add(GRU(64, return_sequences=True, activation='relu', input_shape=(20,1662)))
     model.add(GRU(128, return_sequences=True, recurrent_dropout = 0.2, activation='relu'))
     model.add(GRU(64, return_sequences=False, recurrent_dropout = 0.2, activation='relu'))
     model.add(Dense(64, activation='relu'))
     model.add(Dense(32, activation='relu'))
-    model.add(Dense(46, activation='softmax'))
+    model.add(Dense(6, activation='softmax'))
 
     model.load_weights(model_path)
     return model
@@ -23,7 +23,7 @@ class Predictor:
         self.model = create_model(model_path)
         self.mp_holistic = mp.solutions.holistic
         self.mp_drawing = mp.solutions.drawing_utils 
-        self.actions = ['drink', 'computer', 'before', 'go', 'who']
+        self.actions = ['arm', 'drink', 'computer', 'before', 'go', 'who', 'a', 'b', 'c', 'd', 'e','f','g','h','i','j','k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's']
         self.threshold = 0.8
         self.counts = []
 
