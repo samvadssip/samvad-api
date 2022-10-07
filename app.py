@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import requests, json
 from functions import Predictor
 
@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "hello world"
+    return render_template("index.html")
 
 
 # @app.route('/translate', methods=['POST', 'GET'])
@@ -29,5 +29,5 @@ def home():
 #     return jsonify(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
