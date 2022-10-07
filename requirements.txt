@@ -4,3 +4,4 @@ gunicorn
 mediapipe
 opencv-python
 tensorflow-cpu
+requests

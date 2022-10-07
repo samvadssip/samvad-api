@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
+import requests, json
 from functions import Predictor
 
 app = Flask(__name__)
 
-pred = Predictor('model.h5')
+pred = Predictor('latest_model.h5')
 
 @app.route('/')
 def home():
@@ -14,6 +15,9 @@ def home():
 def translate():
     video_path = request.form.get('video') #video path
     # result = {'pictures': pictures}
+
+    res = json.loads(requests.get(video_path).content.decode("utf-8"))
+    video_path += "?alt=media&token=" + res["downloadTokens"]
 
     text = pred.predict(video_path)
 
